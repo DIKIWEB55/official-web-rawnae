@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pendaftaran Calon Pramuka Rawnae</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: times new roman, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #8B0000, #FFD700, #A0522D);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      padding: 20px;
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-table {
+      width: 250px;
+      margin: 20px auto;
+      border-collapse: collapse;
+      cursor: pointer;
+      transition: transform 0.5s ease;
+    }
+
+    .logo-table img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      transition: transform 0.5s ease, margin 0.5s ease;
+    }
+
+    /* Kelas untuk animasi logo ketika diklik */
+    .logo-left-animated {
+      transform: scale(1.5);
+      margin-right: 50px;
+    }
+
+    .logo-right-animated {
+      transform: scale(1.5);
+      margin-left: 50px;
+    }
+
+    #penjelasan {
+      display: none;
+      opacity: 0;
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      color: #fff;
+      transition: opacity 0.5s ease;
+      max-width: 600px;
+    }
+
+    #penjelasan.show {
+      opacity: 1;
+    }
+
+    .btn-daftar {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #fff;
+      color: #8B0000;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-daftar:hover {
+      background-color: #FFD700;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #fff;
+      padding-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Gaya untuk ikon media sosial */
+    .social-icons a {
+      color: #fff;
+      font-size: 28px;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #FFD700;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Selamat Datang di Pendaftaran Pramuka RAWNAE</h1>
+    <p>Klik tabel logo untuk tahu lebih lanjut tentang RAWNAE</p>
+
+    <table class="logo-table" onclick="tampilkanPenjelasanDanAnimasi()">
+      <tr>
+        <td style="text-align: right; padding-right: 10px;">
+          <img id="logoKiri" src="https://i.ibb.co.com/mFNhHMtY/20250718-231733.png" alt="Logo RAWNAE Putri">
+        </td>
+        <td style="text-align: left; padding-left: 10px;">
+          <img id="logoKanan" src="https://i.ibb.co.com/4RQx6Gwv/20250718-233310.png" alt="Logo RAWNAE Putra">
+        </td>
+      </tr>
+    </table>
+
+    <div id="penjelasan">
+      <h3>Apa itu RAWNAE?</h3>
+      <p>RAWNAE adalah rumah bagi jiwa-jiwa muda yang ingin bertumbuh melalui Pramuka. Di sini, kita belajar bukan hanya tentang tali-temali, tapi tentang hidup, tanggung jawab, dan rasa cinta terhadap sesama.</p>
+      <p>Angkatan 2024 akan menjadi saksi perubahan — dan kamu bagian dari itu.</p>
+    </div>
+
+    <button class="btn-daftar" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSf8NaSzhv9RTU1oVEr10-z_-CQv45rzaO-yLdt7IwkgtK5fHg/viewform?embedded=true'">
+      Daftar Sekarang
+    </button>
+
+    <footer>
+      &copy; ets 2025 Pramuka Rawnae.
+      <div class="social-icons" style="margin-top: 10px;">
+        <a href="https://www.instagram.com/ambalanrawnae?igsh=MTM4Z3I4Y3FkamRlaw==" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@pramuka_smkn1ckl?_t=ZS-8y8R98rbsY5&_r=1" target="_blank" aria-label="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+      </div>
+      Ikuti instagram @ambalanrawnaw dan TikTok @rawnae.
+    </footer>
+  </div>
+
+  <script>
+    let isOpen = false;
+
+    function tampilkanPenjelasanDanAnimasi() {
+      const desc = document.getElementById("penjelasan");
+      const logoKiri = document.getElementById('logoKiri');
+      const logoKanan = document.getElementById('logoKanan');
+
+      if (!isOpen) {
+        // Tampilkan penjelasan (fade in)
+        desc.style.display = "block";
+        setTimeout(() => {
+          desc.classList.add("show");
+        }, 10);
+
+        // Animasikan logo
+        logoKiri.classList.add('logo-left-animated');
+        logoKanan.classList.add('logo-right-animated');
+      } else {
+        // Sembunyikan penjelasan (fade out)
+        desc.classList.remove("show");
+        setTimeout(() => {
+          desc.style.display = "none";
+        }, 500);
+
+        // Kembalikan animasi logo
+        logoKiri.classList.remove('logo-left-animated');
+        logoKanan.classList.remove('logo-right-animated');
+      }
+
+      isOpen = !isOpen;
+    }
+  </script>
+</body>
+</html>
